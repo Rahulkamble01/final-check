@@ -29,3 +29,76 @@ This is a boiler plate project for FSD Certification Practice Check. Fork this p
 2. Search New Analyst
 3. Blacklist New Analyst
 4. Logout
+
+
+
+# Analysis and Design 
+
+## Screen Layout for Signup page.
+
+1. Header - Create an Account to Login...
+2. Name [input type ="text"].
+3. Email [input type ="text"].
+4. Password [input type ="password"].
+5. SignUp button [input type ="button"].
+6. Model for confirmation message [id="signupconfirmation
+
+## Screen Layout for Login page.
+
+1. Header - Login Page...
+2. Name [input type ="text"].
+3. Email [input type ="text"].
+4. Password [input type ="password"].
+5. Login button [input type ="button"].
+
+## DataBae for ArticleSearch
+
+### Table Name - user
+
+| **Fiels** | **Data Type** |
+|-----------|-------------------|
+| 1. us_id. | int primary key not null|
+| 2. us_name. | varchar(70) not null|
+| 3. us_email. | varchar(255) not null|
+| 4. us_ur_id. | int not null|
+| 5. us_password. | int not null|
+| 6. us_art_id. | int not null
+| 7. us_lan_id. | int not null|
+
+### Table Name - user_role
+
+| **Fiels** | **Data Type** |
+|-----------|-------------------|
+| 1. ur_id | int primary key not null |
+| 2. ur_role | varchar(10) not null |
+
+
+### Table Name - language
+
+| **Fiels** | **Data Type** |
+|-----------|-------------------|
+| 1. lang_id | int primary key not null |
+| 2. lang_name | varchar(45) not null |
+
+
+
+### Table Name - article
+
+| **Fiels** | **Data Type** |
+|-----------|-------------------|
+| 1. art_id | int primary key not null |
+| 2. art_name | varchar(100) not null |
+| 2. art_name | varchar(100) not null |
+| 2. art_name | varchar(100) not null |
+
+
+
+
+
+
+
+
+
+
+
+
