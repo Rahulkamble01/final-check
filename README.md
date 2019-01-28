@@ -87,9 +87,24 @@ This is a boiler plate project for FSD Certification Practice Check. Fork this p
 | **Fiels** | **Data Type** |
 |-----------|-------------------|
 | 1. art_id | int primary key not null |
-| 2. art_name | varchar(100) not null |
-| 2. art_name | varchar(100) not null |
-| 2. art_name | varchar(100) not null |
+| 2. art_name | VARCHAR(100) not null |
+| 2. art_title | VARCHAR(255) not null |
+| 2. art_desc | VARCHAR(255) not null |
+| 2. art_content | VARCHAR(255) not null |
+| 2. art_author | VARCHAR(70) not null |
+| 2. art_url | VARCHAR(255) not null |
+| 2. art_urlToImage | VARCHAR(255) not null |
+| 2. art_publishedAt | DATETIME not null |
+
+### Table Name - favourite_article
+
+| **Fiels** | **Data Type** |
+|-----------|-------------------|
+| 1. fa_id | int primary key not null |
+| 2. fa_art_id | int not null |
+| 2. fa_us_id | int not null |
+
+
 
 
 
