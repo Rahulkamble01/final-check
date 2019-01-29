@@ -41,14 +41,19 @@ public class User {
 	@Column(name="us_password")
 	private String password;
 	
+	@Column(name="us_status")
+	private String status;
+	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "us_ur_id")
 	private Role role;
 	
+	
 	@Transient
 	private Article article;
 	
-	@Transient
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinColumn(name="us_lang_id")
 	private Language language;
 	
 	public User() {
@@ -56,12 +61,13 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int id, String name, String email, String password, Role role, Article article, Language language) {
+	public User(int id, String name, String email, String password,	String status, Role role, Article article, Language language) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.status = status;
 		this.role = role;
 		this.article = article;
 		this.language = language;
@@ -99,6 +105,14 @@ public class User {
 		this.password = password;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public Role getRole() {
 		return role;
 	}
@@ -119,15 +133,18 @@ public class User {
 		return language;
 	}
 
-	public void setLangualge(Language langualge) {
-		this.language = langualge;
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", role=" + role
-				+ ", article=" + article + ", language=" + language + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", status="
+				+ status + ", role=" + role + ", article=" + article + ", language=" + language + "]";
 	}
+	
+	
+	
 
 	
 	
