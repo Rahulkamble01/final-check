@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
 import { FormGroup, FormControl, Validators,  } from '@angular/forms';
+import { Route, Router } from '@angular/router';
+import { LanguageService } from '../language.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +13,7 @@ import { FormGroup, FormControl, Validators,  } from '@angular/forms';
 export class LoginComponent implements OnInit {
   values: any;
   error : any;
+
 
   form = new FormGroup({
     email: new FormControl(
@@ -25,19 +29,36 @@ export class LoginComponent implements OnInit {
         Validators.maxLength(50)]),
   });
 
-  constructor(private service : LoginService){ }
+  constructor(private service : LoginService, private languageService : LanguageService,private auth : AuthService, private router: Router){ }
 
   ngOnInit() {
   }
 
   login(){
     //console.log(this.form.value)
-    console.log("click on signup button");
+    console.log("click on login button");
     console.log(this.form);
-    this.service.userLogin(this.form.value).subscribe(
+    this.service.userLogin(JSON.stringify(this.form.value)).subscribe(
       data =>{
-       this.values=data;
-       console.log("values "+this.values)
+        console.log("authenticate")
+        console.log(data.authenticate); // check the authentication status
+        if (data.authenticate) {
+          console.log(data.authenticate);
+          this.languageService.setLanguageCode(data.user.language.languageCode); //set the anylist language id
+          console.log(data.user.language.languageCode);
+
+          this.auth.setUser(data.user);
+          console.log(data.user);
+
+          /* this.auth.setEmailId(data.user.email);  //set email id
+          console.log(data.user.email); */
+
+          this.router.navigate(['/news']);
+        }
+         if (data.admin) {
+           
+      this.router.navigate(['/']);
+        }
       },
       error =>{
         this.error = error;

@@ -32,9 +32,9 @@ public class SignupService {
 		LOGGER.info("inside the signup Service");
 		LOGGER.info("user values in signup : {}", user);
 		String actualUser = user.getEmail();
-		LOGGER.info("actualuser values in signup : {}", actualUser);
+		LOGGER.debug("actualuser values in signup : {}", actualUser);
 		User existingUser = userRepository.findByEmail(user.getEmail());
-		LOGGER.info("exisingUser values in signup : {}", existingUser);
+		LOGGER.debug("exisingUser values in signup : {}", existingUser);
 		SignupStatus status = new SignupStatus();
 		if(existingUser != null){
 			status.setStauts(false);

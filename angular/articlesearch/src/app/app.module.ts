@@ -7,13 +7,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
+import { NewsapiComponent } from './newsapi/newsapi.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent,
+    NewsapiComponent
   ],
   imports: [
     BrowserModule,

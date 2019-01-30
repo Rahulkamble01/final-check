@@ -19,6 +19,34 @@ export class LanguageService {
 
   constructor(private http : HttpClient) { }
 
+  languages:any;
+  languageId:any;
+  languageCode:any;
+
+  getLanguage(){
+    return  this.language;
+   }
+
+  setLanguages(languages:string){
+    this.languages=languages;
+ }
+ 
+getLanguageId(){
+  return  this.languageId;
+ }
+
+ setLanguageId(languageId:any){
+     this.languageId=languageId;
+  }
+
+  getLanguageCode(){
+    return  this.languageCode;
+   }
+  
+   setLanguageCode(languageCode:string){
+       this.languageCode=languageCode;
+    }
+
   language():Observable<any>{
    
     return this.http.get<any>(this.url);

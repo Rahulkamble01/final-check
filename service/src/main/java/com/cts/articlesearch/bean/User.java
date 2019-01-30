@@ -1,5 +1,7 @@
 package com.cts.articlesearch.bean;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,60 +10,63 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-
 @Entity
-@Table(name ="user")
+@Table(name = "user")
 public class User {
 
 	@Id
-	@Column(name="us_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "us_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@NotNull(message = "User Name cannot be empty")
 	@Size(max = 70, message = "Name must not exceed 70 characters")
-	@Column(name="us_name")
+	@Column(name = "us_name")
 	private String name;
-	
+
 	@NotNull(message = "Email cannot be empty")
 	@Pattern(regexp = ".+@.+\\..+", message = "Email address is invalid")
 	@Size(max = 255, message = "Email must not exceed 255 characters")
-	@Column(name="us_email")
+	@Column(name = "us_email")
 	private String email;
-	
+
 	@NotNull(message = "Password cannot be empty")
 	@Size(min = 6, max = 50, message = "Password must be 6 to 50 characters")
-	@Column(name="us_password")
+	@Column(name = "us_password")
 	private String password;
-	
-	@Column(name="us_status")
+
+	@Column(name = "us_status")
 	private String status;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "us_ur_id")
 	private Role role;
-	
-	
-	@Transient
-	private Article article;
-	
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "favourite_article", joinColumns = { @JoinColumn(name = "fa_art_id") }, inverseJoinColumns = {
+	@JoinColumn(name = "fa_us_id") })
+	private List<Article> article;
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinColumn(name="us_lang_id")
+	@JoinColumn(name = "us_lang_id")
 	private Language language;
-	
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int id, String name, String email, String password,	String status, Role role, Article article, Language language) {
+	
+	
+	public User(int id, String name, String email, String password,	String status, Role role, List<Article> article, Language language) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -72,6 +77,8 @@ public class User {
 		this.article = article;
 		this.language = language;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -121,11 +128,11 @@ public class User {
 		this.role = role;
 	}
 
-	public Article getArticle() {
+	public List<Article> getArticle() {
 		return article;
 	}
 
-	public void setArticle(Article article) {
+	public void setArticle(List<Article> article) {
 		this.article = article;
 	}
 
@@ -142,11 +149,5 @@ public class User {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", status="
 				+ status + ", role=" + role + ", article=" + article + ", language=" + language + "]";
 	}
-	
-	
-	
-
-	
-	
 
 }

@@ -14,10 +14,13 @@ const httpOptions={
 export class LoginService {
   url : string = '/articlesearch/login/user';
 
+  
   constructor(private http : HttpClient) { }
 
   userLogin(user):Observable<any>{
+    console.log("inside the login service");
     console.log(user);
+
     return this.http.post<any>(this.url, user, httpOptions);
   }
 }
