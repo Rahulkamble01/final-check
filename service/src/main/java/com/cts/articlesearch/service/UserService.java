@@ -3,6 +3,7 @@ package com.cts.articlesearch.service;
 import java.util.List;
 
 import javax.persistence.Transient;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,17 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Transient
-	public List<User> allUsers(){
-		List<User> users = userRepository.findAll();
-		return users;
+	@Transactional
+	public User allUsers(String email){
+		return userRepository.findByEmail(email);
 	}
 	
-
+	public void block(User user){
+		
+		userRepository.findByEmail(user.getStatus());
+		user.setStatus("inactive");
+		userRepository.save(user);
+		
+	}
+	
 }

@@ -17,9 +17,6 @@ public class Article {
 	@Column(name="art_id")
 	private int id;
 	
-	@Column(name="art_name")
-	private String name;
-	
 	@Column(name="art_title")
 	private String title;
 	
@@ -49,11 +46,10 @@ public class Article {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Article(int id, String name, String title, String description, String content, String author, String url,
+	public Article(int id, String title, String description, String content, String author, String url,
 			String urlToImage, String publishedAt, String email) {
 		super();
 		this.id = id;
-		this.name = name;
 		this.title = title;
 		this.description = description;
 		this.content = content;
@@ -70,14 +66,6 @@ public class Article {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getTitle() {
@@ -146,7 +134,7 @@ public class Article {
 
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", name=" + name + ", title=" + title + ", description=" + description
+		return "Article [id=" + id + ", title=" + title + ", description=" + description
 				+ ", content=" + content + ", author=" + author + ", url=" + url + ", urlToImage=" + urlToImage
 				+ ", publishedAt=" + publishedAt + ", email=" + email + "]";
 	}

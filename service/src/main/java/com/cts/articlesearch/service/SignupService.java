@@ -44,6 +44,7 @@ public class SignupService {
 			role.setId(2);
 			user.setRole(role);
 			status.setStauts(true);
+			user.setStatus("active");
 			userRepository.save(user);
 			status.setMessage("Please Login to Continue...");	
 		}

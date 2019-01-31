@@ -6,6 +6,7 @@ import com.cts.articlesearch.bean.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 	
-	User findByEmail (String Email);
+	User findByEmail (String email);
+	
 
 }

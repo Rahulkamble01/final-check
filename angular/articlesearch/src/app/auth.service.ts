@@ -12,6 +12,7 @@ export class AuthService {
   role: string;
   emailId: any;
   user:any;
+  id : any;
 
   constructor() { }
 
@@ -29,6 +30,14 @@ export class AuthService {
 
   setEmailId(emailId: any) {
     this.emailId = emailId;
+  }
+
+  getId() {
+    return this.emailId;
+  }
+
+  setId(id: any) {
+    this.id = id;
   }
 
   login() {

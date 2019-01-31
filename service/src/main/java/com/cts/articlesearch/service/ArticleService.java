@@ -9,7 +9,6 @@ import com.cts.articlesearch.bean.Article;
 import com.cts.articlesearch.bean.User;
 import com.cts.articlesearch.repository.ArticleRepository;
 import com.cts.articlesearch.repository.UserRepository;
-import com.cts.articlesearch.restcontroller.SignupController;
 
 @Service
 public class ArticleService {
@@ -19,6 +18,7 @@ public class ArticleService {
 	@Autowired
 	private ArticleRepository articleRepository;
 	
+	@Autowired
 	private UserRepository userRepository;
 	
 	public void saveArticle(Article article){
