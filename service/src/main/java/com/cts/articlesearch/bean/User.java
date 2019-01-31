@@ -51,7 +51,7 @@ public class User {
 	private Role role;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "favourite_article", joinColumns = { @JoinColumn(name = "fa_art_id") }, inverseJoinColumns = {
+	@JoinTable(name = "fa_art_id", joinColumns = { @JoinColumn(name = "favourite_article") }, inverseJoinColumns = {
 	@JoinColumn(name = "fa_us_id") })
 	private List<Article> article;
 

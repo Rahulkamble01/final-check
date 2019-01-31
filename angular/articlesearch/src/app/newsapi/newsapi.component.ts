@@ -30,7 +30,6 @@ export class NewsapiComponent implements OnInit {
     //load news sources
     this.newsapi.initSources().subscribe(data=> this.mSources = data['sources']); */
     //this.languageCode = this.languageService.getLanguageCode();
-      
       this.languageCode="en";
     console.log(this.languageCode);
   
