@@ -16,7 +16,7 @@ export class AdminpageService {
   url: string = "/articlesearch/getAnaylist/";
    blockUrl: string = "/articlesearch/anaylist/blocked"; 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, ) { }
 
   search(email): Observable<any>{    
     console.log(email);

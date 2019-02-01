@@ -62,6 +62,7 @@ export class NewsapiComponent implements OnInit {
     console.log(article);
     this.newsapi.saveArticles(article).subscribe(
       data =>{
+        alert("save the favourite article");
         console.log(data);
       
     })

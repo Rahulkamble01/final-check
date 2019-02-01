@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { NewsapiComponent } from './newsapi/newsapi.component';
 import { AdminpageComponent } from './adminpage/adminpage.component';
+import { FavouriteComponent } from './favourite/favourite.component';
 
 
 
@@ -20,7 +21,8 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
     LoginComponent,
     HeaderComponent,
     NewsapiComponent,
-    AdminpageComponent
+    AdminpageComponent,
+    FavouriteComponent
   ],
   imports: [
     BrowserModule,

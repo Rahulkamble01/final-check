@@ -20,11 +20,12 @@ public class ArticleController {
 	private ArticleService articleService;
 	
 	@PostMapping("/saveArticle")
-	public void save(@RequestBody Article article){
+	public Article save(@RequestBody Article article){
 		LOGGER.info("start the article controller");
 		LOGGER.debug("article : {}", article);
-		articleService.saveArticle(article);
 		LOGGER.info("end the article controller");
+		return articleService.saveArticle(article);
+		
 	}
 
 }

@@ -51,8 +51,8 @@ public class User {
 	private Role role;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "fa_art_id", joinColumns = { @JoinColumn(name = "favourite_article") }, inverseJoinColumns = {
-	@JoinColumn(name = "fa_us_id") })
+	@JoinTable(name = "favourite_article", joinColumns = { @JoinColumn(name = "fa_us_id") }, inverseJoinColumns = {
+	@JoinColumn(name = "fa_art_id") })
 	private List<Article> article;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)

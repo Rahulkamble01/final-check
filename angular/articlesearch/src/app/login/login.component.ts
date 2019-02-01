@@ -17,13 +17,13 @@ export class LoginComponent implements OnInit {
 
   form = new FormGroup({
     email: new FormControl(
-      '',
+      'rahulkamble130595@gmail.com',
       [ Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
         Validators.maxLength(255),
       ]),
     password: new FormControl(
-      '',
+      '123456',
       [ Validators.required,
         Validators.minLength(6),
         Validators.maxLength(50)]),
@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
           console.log(data.user.language.languageCode);
 
           this.auth.setUser(data.user);
+          this.auth.setEmailId(data.user.email);
           console.log(data.user);
 
           /* this.auth.setEmailId(data.user.email);  //set email id

@@ -21,7 +21,7 @@ public class ArticleService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public void saveArticle(Article article){
+	public Article saveArticle(Article article){
 		LOGGER.info("start the article service");
 		LOGGER.debug("article in service : {}", article);
 		Article save = articleRepository.save(article);
@@ -31,5 +31,7 @@ public class ArticleService {
 		user.getArticle().add(save);
 		userRepository.save(user);
 		LOGGER.info("end the article service");
+		return article;
+		
 	}
 }
