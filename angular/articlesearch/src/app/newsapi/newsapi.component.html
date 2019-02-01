@@ -50,7 +50,7 @@
               <!-- <a href= "http://www.sys-con.com/node/4371031" class="btn btn-primary">Go somewhere</a>-->
             </div>
             <div class="card-footer text-muted">
-                <button class="btn btn-primary" (click)="saveFavourite(article);"><i class="far fa-thumbs-up"></i></button>
+                <button *ngIf="status" class="btn btn-primary" (click)="saveFavourite(article);"><i class="far fa-thumbs-up"></i></button>
               <p class="card-title">Author : {{article.author}} , {{article.publishedAt | date}}</p>
 
             </div>

@@ -13,6 +13,7 @@ export class NewsapiComponent implements OnInit {
   languageCode: any;
   language: any;
   articles:any;
+  status : boolean = false ;
   //article:any;
   emailId:any;
   userData:any;
@@ -64,6 +65,7 @@ export class NewsapiComponent implements OnInit {
       data =>{
         alert("save the favourite article");
         console.log(data);
+        this.status= true;
       
     })
 
