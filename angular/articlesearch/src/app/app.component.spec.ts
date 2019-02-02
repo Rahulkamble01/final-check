@@ -1,16 +1,47 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { NewsapiComponent } from './newsapi/newsapi.component';
+import { AdminpageComponent } from './adminpage/adminpage.component';
+import { FavouriteComponent } from './favourite/favourite.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { APP_BASE_HREF } from '@angular/common';
+import { HeaderComponent } from './header/header.component';
 
-describe('AppComponent', () => {
+fdescribe('AppComponent', () => {
+
+  const routes: Routes = [
+    { path : "", component: LoginComponent},
+    { path : "login", component: LoginComponent},
+    { path : "signup", component: SignupComponent},
+    { path : "news", component: NewsapiComponent},
+    { path : "admin", component : AdminpageComponent},
+    { path : "favourite", component : FavouriteComponent}
+  ];
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        ReactiveFormsModule, 
+        FormsModule, 
+        AppRoutingModule, 
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        LoginComponent,
+        SignupComponent,
+        NewsapiComponent,
+        AdminpageComponent,
+        FavouriteComponent,
+        HeaderComponent
       ],
+      providers: [
+        {provide : APP_BASE_HREF  , USE_VALUE:'/'}
+      ]
     }).compileComponents();
   }));
 
@@ -26,10 +57,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('articlesearch');
   });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to articlesearch!');
-  });
 });

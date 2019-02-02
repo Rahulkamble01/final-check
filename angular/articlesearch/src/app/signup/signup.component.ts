@@ -51,6 +51,8 @@ export class SignupComponent implements OnInit {
      })
   }
 
+  /* https://code.tutsplus.com/tutorials/testing-components-in-angular-using-jasmine-part-2-services--cms-28933 -----? karma */
+
   signup(){
       //console.log(this.form.value)
       console.log("click on signup button");
