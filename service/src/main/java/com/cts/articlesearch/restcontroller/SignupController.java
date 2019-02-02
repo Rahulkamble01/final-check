@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.xmlunit.validation.Languages;
 
 import com.cts.articlesearch.bean.Language;
 import com.cts.articlesearch.bean.SignupStatus;
@@ -19,7 +18,7 @@ import com.cts.articlesearch.service.SignupService;
 
 @RestController
 @RequestMapping("/signup")
-public class SignupController {
+public class SignupController extends ArticleSearchExceptionController {
 	private final static Logger LOGGER = LoggerFactory.getLogger(SignupController.class);
 
 	@Autowired

@@ -65,13 +65,13 @@ fdescribe('LoginComponent', () => {
     expect(component.form.valid).toBeFalsy();
   }));
 
-  it('is form invalid when email pattern is wrong ',async(()=>{
+  it('form invalid when email pattern is wrong ',async(()=>{
     component.form.controls['email'].setValue('Rahul');
     expect(component.form.valid).toBeFalsy();
     expect(component.form.controls['email'].valid).toBeFalsy();
   }));
 
-  it('is form invalid when password character less than 6',async(()=>{
+  it('form invalid when password character less than 6',async(()=>{
     component.form.controls['password'].setValue('Rahul');
     expect(component.form.valid).toBeFalsy();
     expect(component.form.controls['password'].valid).toBeFalsy();

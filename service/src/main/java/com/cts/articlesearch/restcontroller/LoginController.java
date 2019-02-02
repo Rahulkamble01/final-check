@@ -14,7 +14,7 @@ import com.cts.articlesearch.service.LoginService;
 
 @RestController
 @RequestMapping("/login")
-public class LoginController {
+public class LoginController extends ArticleSearchExceptionController{
 	
 	@Autowired
 	private LoginService loginService;

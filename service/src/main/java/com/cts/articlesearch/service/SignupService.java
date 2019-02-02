@@ -37,13 +37,13 @@ public class SignupService {
 		LOGGER.debug("exisingUser values in signup : {}", existingUser);
 		SignupStatus status = new SignupStatus();
 		if(existingUser != null){
-			status.setStauts(false);
+			status.setStatus(false);
 			status.setMessage("User is already exist...!");
 		} else {
 			Role role = new Role();
 			role.setId(2);
 			user.setRole(role);
-			status.setStauts(true);
+			status.setStatus(true);
 			user.setStatus("active");
 			userRepository.save(user);
 			status.setMessage("Please Login to Continue...");	

@@ -2,22 +2,22 @@ package com.cts.articlesearch.bean;
 
 public class SignupStatus {
 	
-	private boolean stauts;
+	private boolean status;
 	private String message;
 	public SignupStatus() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SignupStatus(boolean stauts, String message) {
+	public SignupStatus(boolean status, String message) {
 		super();
-		this.stauts = stauts;
+		this.status = status;
 		this.message = message;
 	}
-	public boolean isStauts() {
-		return stauts;
+	public boolean isStatus() {
+		return status;
 	}
-	public void setStauts(boolean stauts) {
-		this.stauts = stauts;
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	public String getMessage() {
 		return message;
@@ -27,7 +27,7 @@ public class SignupStatus {
 	}
 	@Override
 	public String toString() {
-		return "SignupStatus [stauts=" + stauts + ", message=" + message + "]";
+		return "SignupStatus [status=" + status + ", message=" + message + "]";
 	}
 	
 	

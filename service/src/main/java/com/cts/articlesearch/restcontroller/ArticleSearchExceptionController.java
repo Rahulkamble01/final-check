@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.cts.articlesearch.bean.ErrorResponse;
 
-public class ArticleSearchController {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleSearchController.class);
+public class ArticleSearchExceptionController {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleSearchExceptionController.class);
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleError(Exception ex) {
@@ -30,7 +30,7 @@ public class ArticleSearchController {
 			error.setReasonCode(HttpStatus.BAD_REQUEST.value());
 			ConstraintViolationException constraintException = (ConstraintViolationException) ex;
 			Set<ConstraintViolation<?>> set = constraintException.getConstraintViolations();
-			String errorMessage = "Input Validation Failed:";
+			String errorMessage = "Input Validation Failed: ";
 			for (ConstraintViolation<?> constraintViolation : set) {
 				errorMessage += constraintViolation.getMessageTemplate() + ",";
 			}
