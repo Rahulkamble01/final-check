@@ -164,6 +164,24 @@ public class SignupControllerTest {
 		LOGGER.info("End: testSignupControllerInvalidNameFormat()");
 	}
 	
+	@Test
+	public void testSignupControllerInvalidEmailIdSize() throws Exception {
+		LOGGER.info("Start: inside testSignupControllerInvalidPasswordFormat()");
+		String SIGNUP_REQUEST = "{\"name\":\"RahulKamble\"" + "," + "\"language\":{\"id\":\"1\"}" + ","		
+                + "\"role\":{\"id\":\"2\"}" + "," + "\"email\":\"rahukambRahulKambleRahulKambleRahul"
+                		+ "KambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahul"
+                		+ "KambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahul"
+                		+ "KambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahul"
+                		+ "KambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahul"
+                		+ "KambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahul"
+                		+ "KambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahulKambleRahul"
+                		+ "KambleRahulKambleRahulKambleRahulKambleRahulKamblele12@gmail.com\"" + ","
+                		+ "\"password\":\"12312345\"}";
+		mockMvc.perform(post("/signup/user/save").content(SIGNUP_REQUEST).contentType("application/json;charset=UTF-8"))
+		.andExpect(status().is4xxClientError())
+		.andExpect(jsonPath("$.errorMessage").value("Input Validation Failed: Email must not exceed 255 characters"));
+		LOGGER.info("End: testSignupControllerInvalidPasswordFormat()");
+	}
 	
 	
 	

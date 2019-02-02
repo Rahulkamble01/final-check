@@ -1,5 +1,7 @@
 package com.cts.articlesearch.restcontroller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +18,19 @@ import com.cts.articlesearch.service.LoginService;
 @RequestMapping("/login")
 public class LoginController extends ArticleSearchExceptionController{
 	
+	private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
+	
 	@Autowired
 	private LoginService loginService;
 	
 	
 	@PostMapping("/user")
-	public ResponseEntity<AuthenticationStatus> login(@RequestBody User user){
+	public AuthenticationStatus login(@RequestBody User user){
+		LOGGER.info("inside the LoginController");
 		AuthenticationStatus status = loginService.authenticationStatus(user);
-		return new ResponseEntity<AuthenticationStatus>(status, HttpStatus.OK);
+		LOGGER.debug("status : {}", status);
+		LOGGER.info("inside the LoginController");
+		return status;
 	}
 	
 }
