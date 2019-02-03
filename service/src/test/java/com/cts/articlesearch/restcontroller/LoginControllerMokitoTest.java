@@ -1,8 +1,11 @@
 package com.cts.articlesearch.restcontroller;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -52,34 +55,68 @@ public class LoginControllerMokitoTest {
 	}
 
 	@Test
-	public void unsuccessfullyLoginForNullEmail() {
+	public void testInvalidEmailLogin() {
 		LOGGER.info("Start");
 		User user = new User();
-		user.setPassword("123456");
-		/*//when(loginService.authenticationStatus(user.getEmail())).thenReturn(null);
-		AuthenticationStatus status = loginController.login(user).getBody();
-		LOGGER.debug("status{}", status);
-		assertEquals(true, status.isAuthenticate() == false);
-		*/LOGGER.info("End");
+		user.setPassword("rahulkamble01");
+		user.setEmail("Rahul@gmail.com");
+		Role role = new Role();
+		role.setRole("Admin");
+		user.setRole(role);
+		
+		LOGGER.debug("user for null email check : {} ", user);
+		
+		AuthenticationStatus status = new AuthenticationStatus();
+		status.setAuthenticate(false);
+		status.setUser(null);
+		
+		User actualUser = null;
+		//actualUser.setEmail("Rahul1@gmail.com");
+		//actualUser.setPassword("rahulkamble01");
+		//actualUser.setRole(role);
+		
+		
+		when(userRepository.findByEmail(user.getEmail())).thenReturn(actualUser);
+		AuthenticationStatus actualStatus = loginService.authenticationStatus(user);
+		
+		LOGGER.debug("Expected  Output :  {}", status);
+		LOGGER.debug("Actual  Output :  {}", actualStatus);
+		
+		Assert.assertEquals(true, status.equals(actualStatus));
+		
+		verify(userRepository, times(1)).findByEmail(user.getEmail());
+		LOGGER.info("End");
 
 	}
 
-//	@Test
-//	public void unsuccessfullyLoginForNullPassword() {
-//		LOGGER.info("Start");
-//		User user = new User();
-//		user.setEmail("user");
-//		User actualUser = new User();
-//		actualUser.setEmail("vishal");
-//		actualUser.setPassword("password");
-//		when(loginService.authenticationStatus(user.getEmail())).thenReturn(actualUser);
-//		AuthenticationStatus status = loginController.login(user).getBody();
-//		LOGGER.debug("status{}", status);
-//		;
-//		assertEquals(true, status.isAuthenticate() == false);
-//		LOGGER.info("End");
-//
-//	}
+	
+	@Test
+	public void testForInvalidPassword(){
+		LOGGER.info("start : test login when password is Invalid");
+		User user = new User();
+		user.setEmail("Rahulkamble@gmail.com");
+		user.setPassword("rahul01");
+		
+		Role role = new Role();
+		role.setRole("user");
+		user.setRole(role);
+		
+		AuthenticationStatus status = new AuthenticationStatus();
+		status.setAuthenticate(false);
+		status.setUser(null);
+		
+		User actualUser =null;
+		
+		when(userRepository.findByEmail(user.getEmail())).thenReturn(actualUser);
+		AuthenticationStatus actualStatus = loginService.authenticationStatus(user);
+		
+		LOGGER.debug("status  :  {}", status);
+		LOGGER.debug("Actual   {}", actualStatus); 
+		Assert.assertEquals(true, status.equals(actualStatus));
+		verify(userRepository, times(1)).findByEmail(user.getEmail());
+		
+		
+}
 
 
 }
