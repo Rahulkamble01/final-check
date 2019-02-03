@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { APP_BASE_HREF } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
 
   const routes: Routes = [
     { path : "", component: LoginComponent},

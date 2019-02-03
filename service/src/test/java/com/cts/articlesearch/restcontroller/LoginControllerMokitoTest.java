@@ -105,7 +105,13 @@ public class LoginControllerMokitoTest {
 		status.setAuthenticate(false);
 		status.setUser(null);
 		
-		User actualUser =null;
+		User actualUser = new User();
+		actualUser.setEmail("Rahulkamble@gmail.com");
+		actualUser.setPassword("rahul");
+		
+		Role role1 = new Role();
+		role1.setRole("user");
+		actualUser.setRole(role1);
 		
 		when(userRepository.findByEmail(user.getEmail())).thenReturn(actualUser);
 		AuthenticationStatus actualStatus = loginService.authenticationStatus(user);
