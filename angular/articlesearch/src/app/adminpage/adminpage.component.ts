@@ -9,35 +9,36 @@ import { AdminpageService } from '../adminpage.service';
 })
 export class AdminpageComponent implements OnInit {
 
-  constructor(private adminService:AdminpageService, private router: Router) { }
-  analyst1:any;
-  isUser:boolean
-  analyst2:any;
-  
+  constructor(private adminService: AdminpageService, private router: Router) { }
+  analysts: any;
+  isUser: boolean
+  analyst2: any;
+
 
   ngOnInit() {
   }
 
-  get(email){
-    this.adminService.search(email).subscribe(
+  get(name) {
+    this.adminService.search(name).subscribe(
       data => {
-        if(data!=null){
-         this.isUser=true;
-          this.analyst1=data;
+        if (data != null) {
+          this.isUser = true;
+          this.analysts = data[0];
+          console.log(this.analysts)
         }
- 
-    
-        console.log(this.analyst1)
+
+
+        // console.log(this.analysts)
       }
     );
   }
-   changeStatus(){
-    this.adminService.status(this.analyst1).subscribe(
-      data=>{
-        this.analyst1=data;
+  changeStatus() {
+    this.adminService.status(this.analysts).subscribe(
+      data => {
+        this.analysts = data;
       }
     )
 
-  } 
+  }
 
 }

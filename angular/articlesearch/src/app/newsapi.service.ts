@@ -40,4 +40,10 @@ export class NewsapiService {
     console.log(title);
     return this.http.post<any>(this.url, title, httpOptions);
   }
+
+  searchArticles(keyword) {
+   return this.http.get("https://newsapi.org/v2/everything?q=" + keyword + "&apiKey=" + this.api_key);
+
+  }
+
 }

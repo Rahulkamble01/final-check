@@ -25,37 +25,44 @@
  
   
    -->
-
-   <div class="container">
-      <div class="row  pd">
-        <div class="col-lg-1 "></div>
-        <div class="col-lg-10 col-sm-12">
-          <div class="card text-center" *ngFor="let article of articlesList" >
-            <div class="card-header">
-              {{article.title}}
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-4 sm-12">
-                  <img src="{{article.urlToImage}}" style="width:75%;height:100%">
+<h2 calss="text">Todays News : </h2>
+<div class="container">
+    
+        <input class="form-control mr-sm-2" type="search" [ngModel]="keyword" placeholder="Search" aria-label="Search">
+        
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="search();" type="submit">Search</button>
+        <div *ngFor="let article of value">{{article.description}}</div>
+      
+  <div class="row  pd">
+    <div class="col-lg-1 "></div>
+    <div class="col-lg-10 col-sm-12">
+      <div class="card text-center" *ngFor="let article of articlesList">
+        <div class="card-header">
+          {{article.title}}
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-12 sm-12">
+                <h6 class="card-text">{{article.description}}</h6>
                 </div>
-                <div class="col-lg-8 sm-12">
-    
-                  <h6 class="card-text">{{article.description}}</h6>
-                  <p class="card-text">{{article.content}}</p>
-                </div>
-    
-    
-              </div>
-              <!-- <a href= "http://www.sys-con.com/node/4371031" class="btn btn-primary">Go somewhere</a>-->
+                <div class="col-lg-12 sm-12">
+              <img src="{{article.urlToImage}}" style="width:75%;height:75%">
             </div>
-            <div class="card-footer text-muted">
-                <button *ngIf="status" class="btn btn-primary" (click)="saveFavourite(article);"><i class="far fa-thumbs-up"></i></button>
-              <p class="card-title">Author : {{article.author}} , {{article.publishedAt | date}}</p>
+            <div class="col-lg-12 sm-12">
+              <p class="card-text">{{article.content}}</p>
+            </div>
 
-            </div>
+
           </div>
-    
+          <!-- <a href= "http://www.sys-con.com/node/4371031" class="btn btn-primary">Go somewhere</a>-->
+        </div>
+        <div class="card-footer text-muted">
+          <button class="btn btn-primary" (click)="saveFavourite(article);"><i class="far fa-thumbs-up"></i></button>
+          <p class="card-title">Author : {{article.author}} , {{article.publishedAt | date}}</p>
+
         </div>
       </div>
+
     </div>
+  </div>
+</div>

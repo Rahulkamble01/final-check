@@ -11,32 +11,32 @@ import { AdminpageService } from '../adminpage.service';
 describe('AdminpageComponent', () => {
   let component: AdminpageComponent;
   let fixture: ComponentFixture<AdminpageComponent>;
-  let de : DebugElement;
-  let el : HTMLElement;
+  let de: DebugElement;
+  let el: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminpageComponent ],
-      imports : [
+      declarations: [AdminpageComponent],
+      imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
         RouterTestingModule
-  ],
-  providers : [
-    { provide : AdminpageService }
-  ]
+      ],
+      providers: [
+        { provide: AdminpageService }
+      ]
     })
-    .compileComponents().then(() =>{
-      fixture = TestBed.createComponent(AdminpageComponent);
-      component = fixture.componentInstance;
+      .compileComponents().then(() => {
+        fixture = TestBed.createComponent(AdminpageComponent);
+        component = fixture.componentInstance;
 
-      /* de = fixture.debugElement.query(By.css('form'));
-      
-      el = de.nativeElement; */
+        /* de = fixture.debugElement.query(By.css('form'));
+        
+        el = de.nativeElement; */
 
-    });
+      });
   }));
 
 
@@ -44,10 +44,10 @@ describe('AdminpageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call the  get method', async(()=> {
+  it('should call the  get method', async(() => {
     fixture.detectChanges();
     spyOn(component, 'get');
-    el =fixture.debugElement.query(By.css('button')).nativeElement;
+    el = fixture.debugElement.query(By.css('button')).nativeElement;
     el.click();
     expect(component.get).toHaveBeenCalledTimes(1);
   }));

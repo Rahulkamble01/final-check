@@ -12,7 +12,7 @@ import { AdminpageComponent } from '../adminpage/adminpage.component';
 import { FavouriteComponent } from '../favourite/favourite.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('LoginComponent', () => {
+fdescribe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let de : DebugElement;

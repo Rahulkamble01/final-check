@@ -7,7 +7,7 @@ export class AuthService {
 
 
   isAdminLoggedIn = false;
-  isLearnerLoggedIn = false;
+  isAnyalistLoggedIn = false;
   loggedIn = false;
   role: string;
   emailId: any;

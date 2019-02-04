@@ -11,24 +11,24 @@ import { FavouriteService } from '../favourite.service';
 describe('FavouriteComponent', () => {
   let component: FavouriteComponent;
   let fixture: ComponentFixture<FavouriteComponent>;
-  dl : DebugElement;
-  el : HTMLElement;
+  dl: DebugElement;
+  el: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FavouriteComponent ],
-      imports : [
+      declarations: [FavouriteComponent],
+      imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
         RouterTestingModule
       ],
-      providers : [
-        { provide : FavouriteService }
+      providers: [
+        { provide: FavouriteService }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

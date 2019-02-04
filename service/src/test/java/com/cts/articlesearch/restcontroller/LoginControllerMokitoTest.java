@@ -28,6 +28,7 @@ public class LoginControllerMokitoTest {
 
 	@Mock
 	private UserRepository userRepository;
+	
 	@InjectMocks
 	private LoginService loginService;
 

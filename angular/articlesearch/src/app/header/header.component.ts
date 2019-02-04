@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsapiService } from '../newsapi.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +9,17 @@ import { NewsapiService } from '../newsapi.service';
 })
 export class HeaderComponent implements OnInit {
 
-  
+  isAdminLoggedIn: boolean = false;
+  isAnyalistLoggedIn: boolean = false;
+  loggedIn: boolean = false;
 
-  constructor() { }
+  constructor(private service: AuthService) { }
 
-  ngOnInit() {    
-   
+  ngOnInit() {
+
   }
 
-  
+
+
 
 }

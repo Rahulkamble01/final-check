@@ -14,13 +14,19 @@ const httpOptions={
 export class AdminpageService {
   userData:any;
   url: string = "/articlesearch/getAnaylist/";
+  url1 : string = "/articlesearch/getUsers/"
    blockUrl: string = "/articlesearch/anaylist/blocked"; 
 
   constructor(private http: HttpClient, ) { }
 
-  search(email): Observable<any>{    
-    console.log(email);
-    return this.http.get<any>(this.url+email);
+ /*  search(name): Observable<any>{    
+    console.log(name);
+    return this.http.get<any>(this.url+name);
+} */
+
+search(name): Observable<any>{    
+  console.log(name);
+  return this.http.get<any>(this.url1+name);
 }
 
 status(userData): Observable<any>{    

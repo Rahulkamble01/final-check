@@ -16,9 +16,15 @@ export class FavouriteService {
 
   url = "/articlesearch/getAnaylist/";
 
+  deleteUrl = "/articlesearch/deleteArticle/";
+
   constructor(private http : HttpClient) { }
   getFevouriteAricles(emailId):Observable<any>{ 
     console.log("inside the service");
     return this.http.get<any>(this.url+emailId);
 }
+
+  removeArticle(atricle):Observable<any>{
+    return this.http.post<any>(this.deleteUrl, atricle, httpOptions, )
+  }
 }

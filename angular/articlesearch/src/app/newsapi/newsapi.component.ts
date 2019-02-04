@@ -12,34 +12,35 @@ export class NewsapiComponent implements OnInit {
   articlesList: any;
   languageCode: any;
   language: any;
-  articles:any;
-  status : boolean = false ;
+  articles: any;
+  status: boolean = false;
   //article:any;
-  emailId:any;
-  userData:any;
- 
+  emailId: any;
+  userData: any;
+  keyword: any;
+  value:any;
 
   /* mArticles:Array<any>;
   mSources:Array<any>; */
-  constructor(private newsapi:NewsapiService, private languageService: LanguageService, private auth: AuthService) { }
+  constructor(private newsapi: NewsapiService, private languageService: LanguageService, private auth: AuthService) { }
 
   ngOnInit() {
-    this.userData=this.auth.getUser();
+    this.userData = this.auth.getUser();
     console.log(this.userData);
-   /*  //load articles
-    this.newsapi.initArticles().subscribe(data => this.mArticles = data['articles']);
-    //load news sources
-    this.newsapi.initSources().subscribe(data=> this.mSources = data['sources']); */
-    //this.languageCode = this.languageService.getLanguageCode();
-      this.languageCode="en";
+    /*  //load articles
+     this.newsapi.initArticles().subscribe(data => this.mArticles = data['articles']);
+     //load news sources
+     this.newsapi.initSources().subscribe(data=> this.mSources = data['sources']); */
+    this.languageCode = this.languageService.getLanguageCode();
+    //this.languageCode = "en";
     console.log(this.languageCode);
-  
+
     this.newsapi.getArticles(this.languageCode).subscribe(
-      data =>{
-        this.articlesList  = data.articles;
+      data => {
+        this.articlesList = data.articles;
         console.log(this.articlesList);
       }
-    )  
+    )
 
     /* const NewsAPI = require('newsapi');
     const newsapi = new NewsAPI('b6bfe2b91aa3400b9cc2bfe02a54bb08');
@@ -56,20 +57,29 @@ export class NewsapiComponent implements OnInit {
     });  */
   }
   
+  search(keyword){
+    this.newsapi.searchArticles(keyword).subscribe(
+      data => {
+        console.log(data)
+        this.value = data['articles'];
+      }
+    )
+  }
 
 
-   saveFavourite(article){
+
+  saveFavourite(article) {
     article['email'] = this.userData.email;
     console.log(article);
     this.newsapi.saveArticles(article).subscribe(
-      data =>{
+      data => {
         alert("save the favourite article");
         console.log(data);
-        this.status= true;
-      
-    })
+        this.status = true;
+
+      })
 
   }
-  
-  } 
+
+}
 
