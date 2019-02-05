@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   languageForm: any;
   languageNames: any;
   error: any;
+  signedUp:any;
   constructor(private service: SignupService, private languageService: LanguageService) { }
 
   form = new FormGroup({
@@ -61,6 +62,9 @@ export class SignupComponent implements OnInit {
       data => {
         this.values = data;
         console.log("values " + this.values)
+        if(data){
+          this.signedUp=true;
+        }
       },
       error => {
         this.error = error;

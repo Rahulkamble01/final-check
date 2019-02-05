@@ -2,6 +2,10 @@ import { browser, by, element } from 'protractor';
 
 export class LoginPage{
 
+    getTitle(){
+        return element(by.css('h2'));
+    }
+    
     navigateToLoginPage(){
         return browser.get('/login');
     }

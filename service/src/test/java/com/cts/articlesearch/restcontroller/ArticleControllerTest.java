@@ -1,11 +1,11 @@
 package com.cts.articlesearch.restcontroller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
 import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -36,22 +36,24 @@ public class ArticleControllerTest {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 	}
 	
-	private void saveArticleTest() throws Exception {
-		LOGGER.info("Start: inside LoginControllerTest");
+	@Test
+	public void saveArticleTest() throws Exception {
+		LOGGER.info("Start: inside saveArticleTest");
 		
-		String ARTICLE_SAVE ="{\"title\": \"The battle for Venezuela’s future\"," 
-		+ "\"description\": \"The world’s democracies are right to seek change in Latin America’s worst-governed country\","
-        + "\"content\": \"IF PROTESTS ALONE could oust a president, Nicolás Maduro would already be on a plane to Cuba. On January 23rd at least 1m Venezuelans from across the country took to the streets demanding Mr Maduro step down. They were answering the call of Juan Guaidó, who l… [+6496 chars]\","
-        + "\"author\": \"The Economist\","
-        \"url\": \"http://www.economist.com/leaders/2019/02/02/the-battle-for-venezuelas-future\",
-        \"urlToImage\": \"https://cdn.static-economist.com/sites/default/files/images/print-edition/20190202_LDD001_0.jpg\",
-        \"publishedAt\": \"2019-02-02T00:00:00Z\",
-        \"email\": null"}" ;
+		String ARTICLE_SAVE ="{\"source\":{\"id\":\"the-jerusalem-post\","
+				+ "\"name\":\"The Jerusalem Post\"},"
+				/*+ "\"author\":null,"*/
+				+ "\"title\":\"Cradle of 'Arab Spring' in flux as massive protests rock Tunisia\","
+				+ "\"description\":\"The IMF has urged the country to freeze public sector wages and reduce the government’s ballooning deficit\","
+				/*+ "\"url\":\"https://www.jpost.com/Middle-East/Cradle-of-Arab-Spring-in-flux-as-massive-protests-rock-Tunisia-579711\","
+				+ "\"urlToImage\":\"https://images.jpost.com/image/upload/f_auto,fl_lossy/t_Article2016_ControlFaceDetect/422733\","
+				+ "\"publishedAt\":\"2019-02-05T06:17:00Z\",\"content\":\"X\r\n Dear Reader,\r\n As you can imagine, more people are reading The Jerusalem Post than ever before.\r\n Nevertheless, traditional business models are no longer sustainable and high-quality publications,\r\n like ours, are being forced to look for new ways to keep… [+5431 chars]\","*/
+				+ "\"email\":\"kamb@gmail.com\"}";
 		
-		mockMvc.perform(post("/login/user").content(ARTICLE_SAVE).contentType("application/json;charset=UTF-8"))
+		mockMvc.perform(post("/article/saveArticle").content(ARTICLE_SAVE).contentType("application/json;charset=UTF-8"))
 		.andExpect(status().isOk());
 
-LOGGER.info("END: LoginControllerTest");
+LOGGER.info("END: saveArticleTest");
 
 		
 	}

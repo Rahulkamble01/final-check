@@ -70,9 +70,10 @@ export class NewsapiComponent implements OnInit {
 
   saveFavourite(article) {
     article['email'] = this.userData.email;
-    console.log(article);
+    console.log(JSON.stringify(article));
     this.newsapi.saveArticles(article).subscribe(
       data => {
+       
         alert("save the favourite article");
         console.log(data);
         this.status = true;

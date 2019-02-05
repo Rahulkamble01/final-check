@@ -10,11 +10,12 @@
 				<div class="card-body">
 					<form [formGroup]="form">
 						<div class="form-group">
+								<div *ngIf="signedUp" class="alert alert-success">Sign Up Successfull</div>
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-user"></i></span>
 								</div>
-								<input type="text" formControlName="name" class="form-control" placeholder="name">
+								<input type="text" formControlName="name" id="signupname" class="form-control" placeholder="name">
 								<div *ngIf="form.get('name').touched && form.get('name').invalid">
 									<div *ngIf="form.get('name').errors.required" class="alert alert-danger">Name is mandatory</div>
 									<div *ngIf="form.get('name').errors.required" class="alert alert-danger">Maximum length is 70</div>
@@ -28,7 +29,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="text" formControlName="email" class="form-control" placeholder="Enter email">
+								<input type="text" formControlName="email" id="signupemail" class="form-control" placeholder="Enter email">
 								<div *ngIf="form.get('email').touched && form.get('email').invalid">
 									<div *ngIf="form.get('email').errors.required" class="alert alert-danger">Email is mandatory</div>
 									<div *ngIf="form.get('email').errors.required" class="danger validation">Email is max 255 characters</div>
@@ -42,7 +43,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text"><i class="fas fa-key"></i></span>
 								</div>
-								<input type="password" formControlName="password" class="form-control" placeholder="password">
+								<input type="password" formControlName="password" id="signuppassword" class="form-control" placeholder="password">
 								<div *ngIf="form.get('password').touched && form.get('password').invalid">
 									<div *ngIf="form.get('oldPassword').errors.required" class="danger validation">Password is
 										required</div>
@@ -60,8 +61,8 @@
 						<div formGroupName="language">
 
 							<div class="form-group">
-								<select class="form-control" formControlName="id">
-									<option *ngFor="let language of languageNames" [value]="language.id">{{language.name}}</option>
+								<select class="form-control"  id="signuplanguage" formControlName="id">
+									<option *ngFor="let language of languageNames"  [value]="language.id">{{language.name}}</option>
 								</select>
 							</div>
 						</div>

@@ -26,6 +26,7 @@ export class FavouriteComponent implements OnInit {
   }
 
   deleteArticle(article){
+    
     console.log("inside delete method of favourite");
     this.articleService.removeArticle(article).subscribe(data => {
     })
