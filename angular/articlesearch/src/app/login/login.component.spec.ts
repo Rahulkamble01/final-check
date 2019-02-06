@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { LoginComponent } from './login.component';
 import { By, BrowserModule } from '@angular/platform-browser';
@@ -11,85 +11,103 @@ import { NewsapiComponent } from '../newsapi/newsapi.component';
 import { AdminpageComponent } from '../adminpage/adminpage.component';
 import { FavouriteComponent } from '../favourite/favourite.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 
 fdescribe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let de : DebugElement;
-  let el : HTMLElement;
+  let de: DebugElement;
+  let el: HTMLElement;
+  let service: LoginService;
 
   beforeEach(async(() => {
     const routes: Routes = [
-      { path : "", component: LoginComponent},
-      { path : "login", component: LoginComponent},
-      { path : "signup", component: SignupComponent},
-     ];
+      { path: "", component: LoginComponent },
+      { path: "login", component: LoginComponent },
+      { path: "signup", component: SignupComponent },
+    ];
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
-      imports : [
+      declarations: [LoginComponent],
+      imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
         RouterTestingModule
-  ],
-  providers : [
-    { provide : LoginService }
-  ]
+      ],
+      providers: [
+        { provide: LoginService }
+      ]
     })
-    .compileComponents().then(() =>{
-      fixture = TestBed.createComponent(LoginComponent);
-      component = fixture.componentInstance;
+      .compileComponents().then(() => {
+        fixture = TestBed.createComponent(LoginComponent);
+        component = fixture.componentInstance;
 
-      de = fixture.debugElement.query(By.css('form'));
-      el = de.nativeElement;
+        de = fixture.debugElement.query(By.css('form'));
+        el = de.nativeElement;
 
-    });
+      });
   }));
 
-  
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('form should valid when field is not empty',async(()=> {
+  it('form should valid when field is not empty', async(() => {
     //accessing controls
     component.form.controls['email'].setValue('Rahulkamble01@gmail.com');
     component.form.controls['password'].setValue('Rahulkamble01');
     expect(component.form.valid).toBeTruthy();
   }));
-  it('form should invalid when empty',async(()=> {
+  it('form should invalid when empty', async(() => {
     //accessing controls
     component.form.controls['email'].setValue('');
     component.form.controls['password'].setValue('');
     expect(component.form.valid).toBeFalsy();
   }));
 
-  it('form invalid when email pattern is wrong ',async(()=>{
+  it('form invalid when email pattern is wrong ', async(() => {
     component.form.controls['email'].setValue('Rahul');
     expect(component.form.valid).toBeFalsy();
     expect(component.form.controls['email'].valid).toBeFalsy();
   }));
 
-  it('form invalid when password character less than 6',async(()=>{
+  it('form invalid when password character less than 6', async(() => {
     component.form.controls['password'].setValue('Rahul');
     expect(component.form.valid).toBeFalsy();
     expect(component.form.controls['password'].valid).toBeFalsy();
   }));
-  
-  it('is form invalid when password character more than 50',async(()=>{
+
+  it('is form invalid when password character more than 50', async(() => {
     component.form.controls['password'].setValue('RahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulRahulsdfsadfsafdsffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff');
     expect(component.form.valid).toBeFalsy();
     expect(component.form.controls['password'].valid).toBeFalsy();
-  })); 
+  }));
 
-  it('should call the login method', async(()=> {
+  it('should call the login method', async(() => {
     fixture.detectChanges();
     spyOn(component, 'login');
-    el =fixture.debugElement.query(By.css('button')).nativeElement;
+    el = fixture.debugElement.query(By.css('button')).nativeElement;
     el.click();
     expect(component.login).toHaveBeenCalledTimes(1);
   }));
+
+  it('should call the login service method',inject([LoginService], async(() => {
+    //fixture.detectChanges();
+    service = fixture.debugElement.injector.get(LoginService);  // inject service
+    const data = JSON.parse(JSON.stringify({
+      authenticate: true
+    }))
+    spyOn(service, 'userLogin').and.returnValue(of(data));
+    component.login();
+
+    //el = fixture.debugElement.query(By.css('button')).nativeElement;
+    // el.click();
+    expect(component.authenticated).toBe(data.authenticate);
+
+  }));
+
 
 
 });

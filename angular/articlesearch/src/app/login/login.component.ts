@@ -13,6 +13,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
   values: any;
   error: any;
+  authenticated:any;
 
 
   form = new FormGroup({
@@ -44,8 +45,11 @@ export class LoginComponent implements OnInit {
         console.log("authenticate")
         console.log(data.authenticate); // check the authentication status
         if (data.authenticate) {
-          console.log(data.authenticate);
+          this.authenticated=data.authenticate;
+          
           this.auth.login();
+          this.auth.setToken(data.token);
+
           this.languageService.setLanguageCode(data.user.language.languageCode); //set the anylist language id
           console.log(data.user.language.languageCode);
 

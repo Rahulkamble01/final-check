@@ -43,8 +43,8 @@ public class SignupControllerTest {
 		LOGGER.info("Start: inside testSignupController");
 	
 		
-		String SIGNUP_REQUEST =  "{\"name\":\"RahulKamble\"" + "," + "\"language\":{\"id\":\"1\"}" + ","
-                + "\"role\":{\"id\":\"2\"}" + "," + "\"email\":\"rahukamble@gmail.com\"" + "," + "\"password\":\"123456789\"}";
+		String SIGNUP_REQUEST =  "{\"name\":\"Rahul Vishnu Kamble\"" + "," + "\"language\":{\"id\":\"1\"}" + ","
+                + "\"role\":{\"id\":\"2\"}" + "," + "\"email\":\"rahukamble1112@gmail.com\"" + "," + "\"password\":\"123456789\"}";
 
 
 		mockMvc.perform(post("/signup/user/save").content(SIGNUP_REQUEST).contentType("application/json;charset=UTF-8"))
@@ -76,8 +76,8 @@ public class SignupControllerTest {
 		LOGGER.info("Start: inside testSignupforNullPassword");
 	
 		
-		String SIGNUP_REQUEST =  "{\"name\":\"RahulKamble\"" + "," + "\"language\":{\"id\":\"1\"}" + ","
-                + "\"role\":{\"id\":\"2\"}" + "," + "\"email\":\"rahulkamble@gmail.com\"}";
+		String SIGNUP_REQUEST =  "{\"name\":\"Ramraj\"" + "," + "\"language\":{\"id\":\"1\"}" + ","
+                + "\"role\":{\"id\":\"2\"}" + "," + "\"email\":\"ramraj@gmail.com\"}";
 
 
 		mockMvc.perform(post("/signup/user/save").content(SIGNUP_REQUEST).contentType("application/json;charset=UTF-8"))

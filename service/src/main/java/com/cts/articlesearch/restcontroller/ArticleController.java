@@ -12,7 +12,7 @@ import com.cts.articlesearch.bean.Article;
 import com.cts.articlesearch.service.ArticleService;
 
 @RestController
-@RequestMapping("/article")
+@RequestMapping("/rest/article")
 public class ArticleController {
 	private final static Logger LOGGER = LoggerFactory.getLogger(ArticleController.class);
 	

@@ -57,8 +57,8 @@ export class NewsapiComponent implements OnInit {
     });  */
   }
   
-  search(keyword){
-    this.newsapi.searchArticles(keyword).subscribe(
+  search(){
+    this.newsapi.searchArticles(this.keyword).subscribe(
       data => {
         console.log(data)
         this.value = data['articles'];

@@ -14,9 +14,9 @@ const httpOptions={
 })
 export class FavouriteService {
 
-  url = "/articlesearch/getAnaylist/";
+  url = "/articlesearch/rest/getAnaylist/";
 
-  deleteUrl = "/articlesearch/deleteArticle/";
+  deleteUrl = "/articlesearch/rest/deleteArticle/";
 
   constructor(private http : HttpClient) { }
   getFevouriteAricles(emailId):Observable<any>{ 

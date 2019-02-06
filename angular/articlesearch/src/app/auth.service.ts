@@ -13,6 +13,7 @@ export class AuthService {
   emailId: any;
   user:any;
   id : any;
+  token :any;
 
   constructor() { }
 
@@ -50,11 +51,17 @@ export class AuthService {
     this.loggedIn = false;
   }
 
-  getRole() {
-    return this.role;
+  getToken() {
+    return this.token;
   }
 
+  setToken(token: string) {
+    this.token = token;
+  }
   setRole(role: string) {
     this.role = role;
+  }
+  getRole() {
+    return this.role;
   }
 }

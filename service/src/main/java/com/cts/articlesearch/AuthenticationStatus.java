@@ -7,6 +7,9 @@ public class AuthenticationStatus {
 	private boolean authenticate;
 	private boolean isAdmin;
 	private User user;
+	private String token;
+	
+	
 	
 	public AuthenticationStatus() {
 		super();
@@ -18,6 +21,15 @@ public class AuthenticationStatus {
 		this.authenticate = authenticate;
 		this.isAdmin = isAdmin;
 		this.user = user;
+	}
+
+	
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public boolean isAuthenticate() {

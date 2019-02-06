@@ -42,7 +42,7 @@ public class SignupControllerMokitoTest {
 	public void signUpNewUser() {
 		LOGGER.info("START : Inside Unit Testing signUpNewUser");
 		User user = new User();
-		user.setEmail("rahulkamble@gmail.com");
+		user.setEmail("rahulkamble12345@gmail.com");
 		LOGGER.debug("User Object :  {}", user);
 		when(userRepository.findByEmail(user.getEmail())).thenReturn(null);
 

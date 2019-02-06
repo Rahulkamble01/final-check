@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   isAnyalistLoggedIn: boolean = false;
   loggedIn: boolean = false;
 
-  constructor(private service: AuthService) { }
+  constructor(public service: AuthService) { }
 
   ngOnInit() {
 

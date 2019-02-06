@@ -13,9 +13,9 @@ const httpOptions={
 })
 export class AdminpageService {
   userData:any;
-  url: string = "/articlesearch/getAnaylist/";
-  url1 : string = "/articlesearch/getUsers/"
-   blockUrl: string = "/articlesearch/anaylist/blocked"; 
+  url: string = "/articlesearch/rest/getAnaylist/";
+  url1 : string = "/articlesearch/rest/getUsers/"
+   blockUrl: string = "/articlesearch/rest/anaylist/blocked"; 
 
   constructor(private http: HttpClient, ) { }
 
